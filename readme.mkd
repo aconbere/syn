@@ -1,6 +1,6 @@
 # Syn #
 
-Syn is a simple wrapper function, that returns an EventEmitter providing simple access to two events "started" and "finished". It's primary aid is in helping track when asynchronus functions have completed.
+Syn is a simple wrapper function, that returns an EventEmitter providing simple access to two events "started" and "finished". It's primary aid is in helping track when asynchronus functions have completed. It assumes that the callbacks you pass into the async functions are synchronus.
 
 ## Examples ##
 
@@ -19,4 +19,3 @@ In this example, path will only be removed after stat is called.
     s.addListener("finished", function () {
       fs.remove(path);
     });
-
