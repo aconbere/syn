@@ -1,0 +1,22 @@
+# Syn #
+
+Syn is a simple wrapper function, that returns an EventEmitter providing simple access to two events "started" and "finished". It's primary aid is in helping track when asynchronus functions have completed.
+
+## Examples ##
+
+In this example, path will only be removed after stat is called.
+
+    var sys = require('sys')
+    var fs = require('fs')
+    var syn = require('syn').syn
+
+    var path = "/tmp";
+
+    var s = syn(fs.stat, [path], function (err, stat) {
+      sys.log(stat);
+    });
+
+    s.addListener("finished", function () {
+      fs.remove(path);
+    });
+
