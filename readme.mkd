@@ -8,11 +8,11 @@ In this example, path will only be removed after stat is called.
 
     var sys = require('sys')
     var fs = require('fs')
-    var syn = require('syn').syn
+    var syn = require('syn')
 
     var path = "/tmp";
 
-    var s = syn(fs.stat, [path], function (err, stat) {
+    var s = syn.track(fs.stat, [path], function (err, stat) {
       sys.log(stat);
     });
 
